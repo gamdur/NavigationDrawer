@@ -1,0 +1,4 @@
+/Users/guyamdur/AndroidStudioProjects/NavigationDrawer/app/build/intermediates/classes/debug
+/Users/guyamdur/AndroidStudioProjects/NavigationDrawer/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-999a287141b54069fcec753a869b5bd3af1fc623.jar
+/Users/guyamdur/AndroidStudioProjects/NavigationDrawer/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-144b1066237ec22cd287246ef172b09acf080ddd.jar
+/Users/guyamdur/AndroidStudioProjects/NavigationDrawer/app/build/intermediates/pre-dexed/debug/classes-32d354391c18665858cb5974edbad9690d504af5.jar
