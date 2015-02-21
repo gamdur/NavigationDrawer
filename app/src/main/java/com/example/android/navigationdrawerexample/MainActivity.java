@@ -39,6 +39,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
+import android.preference.RingtonePreference;
 
 /**
  * This example illustrates a common usage of the DrawerLayout widget
@@ -179,16 +186,16 @@ public class MainActivity extends Activity {
         switch(position) {
             case 1:
                 fragment = new PlanetFragmentProfile();
-            case 2:
-                fragment = new PlanetFragmentAsk();
-            case 3:
-                fragment = new PlanetFragmentAnswer();
-            case 4:
-                fragment = new PlanetFragmentViewAnswers();
-            default:
+                break;
+//            case 2:
+//                fragment = new PlanetFragmentAsk();
+//            case 3:
+//                fragment = new PlanetFragmentAnswer();
+//            case 4:
+//                fragment = new PlanetFragmentViewAnswers();
+            default: fragment = new PlanetFragment();
         }
 
-        Fragment fragment = new PlanetFragment();
         Bundle args = new Bundle();
         args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
         fragment.setArguments(args);
@@ -242,7 +249,7 @@ public class MainActivity extends Activity {
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_planet, container, false);
             int i = getArguments().getInt(ARG_PLANET_NUMBER);
-            System.out.println("i" + i);
+            //System.out.println("i" + i);
             String planet = getResources().getStringArray(R.array.planets_array)[i];
 
             //int imageId = getResources().getIdentifier(planet.toLowerCase(Locale.getDefault()),
@@ -256,30 +263,35 @@ public class MainActivity extends Activity {
     /**
      * Fragment that appears in side menu, shows user's profile
      */
-    public static class PlanetFragmentProfile extends Fragment {
+    public static class PlanetFragmentProfile extends PreferenceFragment {
         public static final String ARG_PLANET_NUMBER = "planet_number";
 
         public PlanetFragmentProfile() {
             // Empty constructor required for fragment subclasses
         }
 
+//        @Override
+//        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                                 Bundle savedInstanceState) {
+//            View rootView = inflater.inflate(R.layout.pref_general, container, false);
+//            int i = getArguments().getInt(ARG_PLANET_NUMBER);
+//
+//            System.out.println("i " + i);
+//
+//            String planet = getResources().getStringArray(R.array.planets_array)[i];
+//
+//            //int imageId = getResources().getIdentifier(planet.toLowerCase(Locale.getDefault()),
+//            //                "drawable", getActivity().getPackageName());
+//            //((ImageView) rootView.findViewById(R.id.image)).setImageResource(imageId);
+//            //getActivity().setTitle(planet);
+//            return rootView;
+//        }
+
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_planet, container, false);
-            int i = getArguments().getInt(ARG_PLANET_NUMBER);
+        public void onCreate(Bundle savesInstanceState) {
+            super.onCreate(savesInstanceState);
+            addPreferencesFromResource(R.layout.pref_general);
 
-
-            System.out.println("i" + i);
-
-
-            String planet = getResources().getStringArray(R.array.planets_array)[i];
-
-            //int imageId = getResources().getIdentifier(planet.toLowerCase(Locale.getDefault()),
-            //                "drawable", getActivity().getPackageName());
-            //((ImageView) rootView.findViewById(R.id.image)).setImageResource(imageId);
-            //getActivity().setTitle(planet);
-            return rootView;
         }
     }
 }
